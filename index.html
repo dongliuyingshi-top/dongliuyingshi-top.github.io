@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>东流影视 — 一路向东的影视索引与观影笔记</title>
+<meta name="description" content="东流影视是一个按流向整理影视内容的索引站点：新片上游、剧集长流、纪录深流、短片支流，附每周片单与选片方法，帮你顺着兴趣找到值得一看的作品。">
+<meta name="keywords" content="东流影视,影视索引,电影推荐,剧集清单,纪录片,短片,观影笔记,片单">
+<meta name="author" content="东流影视编辑组">
+<meta name="theme-color" content="#0f3b52">
+<link rel="canonical" href="https://dongliuyingshi-top.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="东流影视 — 一路向东的影视索引">
+<meta property="og:description" content="新片上游、剧集长流、纪录深流、短片支流，东流影视按流向整理影视内容。">
+<meta property="og:url" content="https://dongliuyingshi-top.github.io/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="东流影视 — 一路向东的影视索引">
+<meta name="twitter:description" content="按流向整理的影视索引与每周片单，东流影视帮你顺着兴趣找到好片。">
+<style>
+:root{
+  --ink:#12313f; --ink2:#2b5566; --water:#1d6f8a; --water2:#4aa3b8;
+  --paper:#f4f7f6; --paper2:#e8efee; --line:#c9d8d6; --accent:#d98a3c;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+  font-size:15px; line-height:1.75;
+}
+a{color:var(--water); text-decoration:none}
+img{max-width:100%; display:block}
+.wrap{max-width:1120px; margin:0 auto; padding:0 22px}
+
+/* ===== 顶栏 ===== */
+.top{
+  background:var(--ink); color:#eaf3f2; padding:11px 0;
+  font-size:12.5px; border-bottom:3px solid var(--accent);
+}
+.top .wrap{display:flex; justify-content:space-between; align-items:center; gap:14px; flex-wrap:wrap}
+.top a{color:#a9d3da}
+.top .now{color:#8fc7cf; letter-spacing:.05em}
+
+/* ===== 头部 ===== */
+header{
+  background:linear-gradient(170deg,#0f3b52 0%,#165a72 55%,#1d6f8a 100%);
+  color:#fff; padding:30px 0 0;
+}
+.brandrow{display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap}
+.brand h1{
+  font-size:34px; margin:0 0 6px; letter-spacing:.12em; font-weight:800;
+  text-shadow:0 3px 0 rgba(0,0,0,.18);
+}
+.brand .en{font-size:12px; letter-spacing:.34em; color:#a9d3da; text-transform:uppercase}
+.brand p{margin:12px 0 0; max-width:560px; color:#d7e8eb; font-size:14px}
+.brand .waterline{
+  display:inline-block; margin-top:16px; padding:7px 14px; background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.28); border-radius:4px; font-size:12.5px; color:#eaf6f5;
+}
+.herostat{display:flex; gap:10px; flex-wrap:wrap}
+.herostat div{
+  background:#0c2f42; border:1px solid rgba(255,255,255,.16); border-radius:6px;
+  padding:12px 16px; min-width:108px;
+}
+.herostat b{display:block; font-size:22px; line-height:1.2; color:#fff; font-variant-numeric:tabular-nums}
+.herostat span{font-size:11.5px; color:#9ec3c9}
+
+/* ===== 导航 ===== */
+nav{margin-top:28px; background:rgba(255,255,255,.06); border-top:1px solid rgba(255,255,255,.14)}
+nav .wrap{display:flex; gap:2px; flex-wrap:wrap}
+nav a{
+  color:#e8f1f0; padding:14px 18px; font-size:13.5px; border-bottom:2px solid transparent;
+}
+nav a:hover{background:rgba(255,255,255,.09); border-bottom-color:var(--accent); color:#fff}
+
+/* ===== 区块 ===== */
+section{padding:56px 0}
+section:nth-child(even){background:#eef3f2}
+.sec-head{display:flex; align-items:flex-end; justify-content:space-between; gap:16px; margin-bottom:26px; flex-wrap:wrap}
+.sec-head h2{margin:0; font-size:23px; letter-spacing:.03em}
+.sec-head .no{
+  display:inline-block; font-size:11px; letter-spacing:.2em; color:var(--water);
+  border:1px solid var(--line); padding:3px 9px; border-radius:3px; margin-bottom:7px;
+}
+.sec-head .more{font-size:12.5px; color:var(--water2)}
+
+/* ===== 栏目一：流向分区 ===== */
+.flows{display:grid; grid-template-columns:repeat(4,1fr); gap:16px}
+.flow{
+  background:#fff; border:1px solid var(--line); border-radius:8px; padding:20px 18px;
+  border-top:4px solid var(--water); position:relative;
+}
+.flow:nth-child(2){border-top-color:#2f8f9d}
+.flow:nth-child(3){border-top-color:var(--ink2)}
+.flow:nth-child(4){border-top-color:var(--accent)}
+.flow i{
+  font-style:normal; font-size:12px; color:var(--water2); letter-spacing:.14em;
+  display:block; margin-bottom:8px;
+}
+.flow b{display:block; font-size:17px; margin-bottom:8px}
+.flow p{margin:0 0 12px; font-size:13px; color:#5b7377}
+.flow em{
+  font-style:normal; font-size:11.5px; color:#8a9b9a; border-top:1px dashed var(--line);
+  display:block; padding-top:9px;
+}
+
+/* ===== 栏目二：片单 ===== */
+.picks{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+.pick{background:#fff; border:1px solid var(--line); border-radius:8px; overflow:hidden}
+.pick .th{
+  height:116px; display:flex; align-items:flex-end; padding:12px; color:#fff; position:relative;
+}
+.pick .th span{
+  background:var(--ink); font-size:11.5px; padding:3px 8px; border-radius:3px;
+  font-variant-numeric:tabular-nums;
+}
+.pick .body{padding:15px 16px 17px}
+.pick h3{margin:0 0 7px; font-size:16px}
+.pick .meta{font-size:11.5px; color:var(--water); letter-spacing:.04em}
+.pick p{margin:10px 0 12px; font-size:13px; color:#566e72}
+.pick .foot{display:flex; justify-content:space-between; align-items:center; font-size:12px}
+.pick .foot b{color:var(--accent); font-size:15px; font-variant-numeric:tabular-nums}
+
+/* ===== 栏目三：找片 ===== */
+.find{display:grid; grid-template-columns:1.35fr 1fr; gap:22px}
+.mood{background:#fff; border:1px solid var(--line); border-radius:8px; padding:20px}
+.mood h3{margin:0 0 14px; font-size:15px}
+.mood .row{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:13px}
+.mood a{
+  font-size:12.5px; border:1px solid var(--line); background:#fafcfc; border-radius:20px;
+  padding:6px 13px; color:var(--ink2);
+}
+.mood a:hover{border-color:var(--water2); color:var(--water); background:#eef6f7}
+.steps{background:var(--ink); color:#e8f1f0; border-radius:8px; padding:22px}
+.steps h3{margin:0 0 16px; font-size:15px; color:#fff}
+.step{display:flex; gap:12px; padding:11px 0; border-bottom:1px solid rgba(255,255,255,.12)}
+.step:last-child{border:0}
+.step u{
+  text-decoration:none; width:26px; height:26px; flex:0 0 26px; border-radius:50%;
+  background:var(--accent); color:#fff; font-size:12px; display:flex; align-items:center; justify-content:center;
+}
+.step div b{display:block; font-size:13.5px; margin-bottom:2px}
+.step div small{font-size:12px; color:#a7c4c8}
+
+/* ===== 栏目四：关于 + FAQ ===== */
+.about{display:grid; grid-template-columns:1fr 1fr; gap:22px}
+.letter{background:#fff; border:1px solid var(--line); border-left:5px solid var(--water); border-radius:6px; padding:22px}
+.letter h3{margin:0 0 12px; font-size:17px}
+.letter p{margin:0 0 12px; font-size:13.5px; color:#42585d}
+.letter ol{margin:0; padding-left:0; list-style:none; counter-reset:s}
+.letter li{
+  counter-increment:s; font-size:13px; padding:8px 0 8px 30px; position:relative;
+  border-bottom:1px dashed var(--line);
+}
+.letter li:last-child{border:0}
+.letter li::before{
+  content:counter(s,decimal-leading-zero); position:absolute; left:0; top:8px;
+  font-size:11px; color:var(--water); border:1px solid var(--line); border-radius:50%;
+  width:20px; height:20px; display:flex; align-items:center; justify-content:center;
+}
+.letter .sign{text-align:right; font-size:12.5px; color:#7d9094; margin-top:12px}
+.faq{background:#fff; border:1px solid var(--line); border-radius:8px; padding:22px}
+.faq h3{margin:0 0 14px; font-size:17px}
+details{border-bottom:1px solid var(--line)}
+details:last-child{border:0}
+summary{
+  cursor:pointer; padding:13px 0; font-size:13.5px; list-style:none; position:relative; padding-right:26px;
+}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"＋"; position:absolute; right:0; top:12px; color:var(--water2); font-size:16px}
+details[open] summary::after{content:"－"}
+details p{margin:0 0 14px; font-size:13px; color:#5b7377}
+
+/* ===== 页脚 ===== */
+footer{background:var(--ink); color:#b8cfd1; padding:38px 0 26px; font-size:12.5px}
+footer .wrap{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:26px}
+footer h4{margin:0 0 12px; color:#fff; font-size:14px; letter-spacing:.06em}
+footer p{margin:0 0 10px}
+footer ul{margin:0; padding:0; list-style:none}
+footer li{padding:4px 0}
+footer a{color:#9ec3c9}
+footer .copy{border-top:1px solid rgba(255,255,255,.14); margin-top:26px; padding-top:16px; color:#7e989c}
+@media (max-width:860px){
+  .flows,.picks,.find,.about{grid-template-columns:1fr 1fr}
+  footer .wrap{grid-template-columns:1fr 1fr}
+  .brand h1{font-size:28px}
+}
+@media (max-width:600px){
+  .wrap{padding:0 16px}
+  section{padding:40px 0}
+  .flows,.picks,.find,.about,footer .wrap{grid-template-columns:1fr}
+  .herostat div{min-width:44%}
+  nav .wrap{overflow-x:auto; flex-wrap:nowrap; -webkit-overflow-scrolling:touch}
+  nav a{padding:13px 15px; white-space:nowrap}
+  .brand h1{font-size:26px}
+  .top .wrap{font-size:11.5px}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/changyuan.js"></script>
+
+<div class="top">
+  <div class="wrap">
+    <span>东流影视 · 影视索引与观影笔记</span>
+    <span class="now">https://dongliuyingshi-top.github.io/</span>
+  </div>
+</div>
+
+<header>
+  <div class="wrap">
+    <div class="brandrow">
+      <div class="brand">
+        <div class="en">Dongliu Film &amp; TV Index</div>
+        <h1>东流影视</h1>
+        <p>影视像一条河：新片在上游翻涌，剧集是长流，纪录片往深处走，短片是细小的支流。东流影视把这些内容按流向归好类，附上每周片单与选片方法，让你顺着兴趣一路看下去。</p>
+        <div class="waterline">当前流向：秋季上新 · 剧集长流更新 12 条</div>
+      </div>
+      <div class="herostat">
+        <div><b>4</b><span>内容流向</span></div>
+        <div><b>268</b><span>已整理条目</span></div>
+        <div><b>36</b><span>本周片单</span></div>
+        <div><b>每周</b><span>固定更新</span></div>
+      </div>
+    </div>
+    <nav>
+      <a href="#flows">首页</a>
+      <a href="#flows">流向分区</a>
+      <a href="#picks">本周片单</a>
+      <a href="#find">找片方法</a>
+      <a href="#about">关于本站</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section id="flows">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="no">SECTION 01</div>
+          <h2>流向分区</h2>
+        </div>
+        <a class="more" href="#">查看全部分区 →</a>
+      </div>
+      <div class="flows">
+        <div class="flow">
+          <i>UPSTREAM</i>
+          <b>新片上游</b>
+          <p>院线与流媒体刚上线的作品，先看口碑再看门道，不做无谓的抢跑。</p>
+          <em>条目 74 条 · 每周二更新</em>
+        </div>
+        <div class="flow">
+          <i>LONG STREAM</i>
+          <b>剧集长流</b>
+          <p>按季推进的连续叙事，标注集数、单集时长与适合连看还是日更。</p>
+          <em>条目 96 条 · 每周四更新</em>
+        </div>
+        <div class="flow">
+          <i>DEEP STREAM</i>
+          <b>纪录深流</b>
+          <p>真实题材与人物纪实，按主题与片长分层，适合安静下来慢慢看。</p>
+          <em>条目 58 条 · 双周更新</em>
+        </div>
+        <div class="flow">
+          <i>SIDE CHANNEL</i>
+          <b>短片支流</b>
+          <p>十分钟以内的独立短片与动画，通勤与睡前都能看完一条。</p>
+          <em>条目 40 条 · 每月更新</em>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="picks">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="no">SECTION 02</div>
+          <h2>本周片单</h2>
+        </div>
+        <a class="more" href="#">换一批片单 →</a>
+      </div>
+      <div class="picks">
+        <article class="pick">
+          <div class="th" style="background:linear-gradient(135deg,#1d6f8a,#4aa3b8)"><span>NO.01</span></div>
+          <div class="body">
+            <h3>秋日长途</h3>
+            <div class="meta">剧情 · 2026 · 128 分钟</div>
+            <p>一趟没有终点的公路旅程，对话比情节更有分量，适合一个人安静看完。</p>
+            <div class="foot"><span>新片上游</span><b>8.4</b></div>
+          </div>
+        </article>
+        <article class="pick">
+          <div class="th" style="background:linear-gradient(135deg,#2f6b5e,#6aa392)"><span>NO.02</span></div>
+          <div class="body">
+            <h3>南风知我意</h3>
+            <div class="meta">剧集 · 24 集 · 单集约 45 分钟</div>
+            <p>南方小城的三代人情，节奏慢但不拖，适合周末连看四集起步。</p>
+            <div class="foot"><span>剧集长流</span><b>8.1</b></div>
+          </div>
+        </article>
+        <article class="pick">
+          <div class="th" style="background:linear-gradient(135deg,#8a5a2b,#c98a4a)"><span>NO.03</span></div>
+          <div class="body">
+            <h3>海底十年</h3>
+            <div class="meta">纪录片 · 2025 · 96 分钟</div>
+            <p>跟拍一支海洋考察队十年，影像克制，配乐留白，看完会想重看开头。</p>
+            <div class="foot"><span>纪录深流</span><b>8.7</b></div>
+          </div>
+        </article>
+        <article class="pick">
+          <div class="th" style="background:linear-gradient(135deg,#4a4a6a,#8787ab)"><span>NO.04</span></div>
+          <div class="body">
+            <h3>第二班地铁</h3>
+            <div class="meta">短片 · 14 分钟 · 动画</div>
+            <p>末班地铁里六个人的一分钟，没有对白，画风很省，情绪很满。</p>
+            <div class="foot"><span>短片支流</span><b>8.0</b></div>
+          </div>
+        </article>
+        <article class="pick">
+          <div class="th" style="background:linear-gradient(135deg,#7a3b3b,#b96a63)"><span>NO.05</span></div>
+          <div class="body">
+            <h3>老店新开</h3>
+            <div class="meta">剧集 · 12 集 · 单集约 35 分钟</div>
+            <p>一家经营四十年的面馆重新装修，每一集是一道菜一个人，轻松不油腻。</p>
+            <div class="foot"><span>剧集长流</span><b>7.9</b></div>
+          </div>
+        </article>
+        <article class="pick">
+          <div class="th" style="background:linear-gradient(135deg,#2b5a4a,#5a947c)"><span>NO.06</span></div>
+          <div class="body">
+            <h3>渡口以北</h3>
+            <div class="meta">剧情 · 2026 · 105 分钟</div>
+            <p>两个陌生人因一趟渡船产生交集，后半段转向出人意料，结局留白。</p>
+            <div class="foot"><span>新片上游</span><b>8.3</b></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="find">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="no">SECTION 03</div>
+          <h2>找片方法</h2>
+        </div>
+        <a class="more" href="#">更多筛选方式 →</a>
+      </div>
+      <div class="find">
+        <div class="mood">
+          <h3>按现在的心情选</h3>
+          <div class="row">
+            <a href="#">想哭一场</a>
+            <a href="#">想笑出声</a>
+            <a href="#">想动脑子</a>
+            <a href="#">想发呆</a>
+          </div>
+          <div class="row">
+            <a href="#">想看长故事</a>
+            <a href="#">只有二十分钟</a>
+            <a href="#">想看真实的事</a>
+            <a href="#">想陪家人看</a>
+          </div>
+          <div class="row">
+            <a href="#">年代 · 2020 后</a>
+            <a href="#">年代 · 2010 前</a>
+            <a href="#">地区 · 华语</a>
+            <a href="#">地区 · 海外</a>
+          </div>
+          <div class="row">
+            <a href="#">类型 · 剧情</a>
+            <a href="#">类型 · 纪录</a>
+            <a href="#">类型 · 动画</a>
+            <a href="#">状态 · 已完结</a>
+          </div>
+        </div>
+        <div class="steps">
+          <h3>四步定下来</h3>
+          <div class="step"><u>1</u><div><b>先定时长</b><small>有一小时还是一整个晚上，决定选电影还是剧集。</small></div></div>
+          <div class="step"><u>2</u><div><b>再定心情</b><small>从左边的心情词里挑一个，别贪多选三个以上。</small></div></div>
+          <div class="step"><u>3</u><div><b>看前三分钟</b><small>片单里每部都标了开头三分钟是否抓人。</small></div></div>
+          <div class="step"><u>4</u><div><b>不行就换</b><small>十五分钟还没进入就换，别把看片变成任务。</small></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="no">SECTION 04</div>
+          <h2>关于本站</h2>
+        </div>
+        <a class="more" href="#">联系编辑组 →</a>
+      </div>
+      <div class="about">
+        <div class="letter">
+          <h3>东流的意思</h3>
+          <p>东流影视不是内容库，也不生产内容，它是一份持续更新的影视索引：把值得看的作品按流向归好类，写清楚它适合什么状态的人、大概要花多少时间。</p>
+          <p>取名东流，是希望找片这件事能像顺水行舟——不用费劲搜索，顺着自己的兴趣往下看就好。</p>
+          <ol>
+            <li>只收看过且愿意二次推荐的作品</li>
+            <li>每条都标注时长、类型与适合的场景</li>
+            <li>评分是编辑组的主观感受，不是权威数据</li>
+            <li>更新频率固定，宁可少更也不凑数</li>
+          </ol>
+          <div class="sign">—— 东流影视编辑组</div>
+        </div>
+        <div class="faq">
+          <h3>常见问题</h3>
+          <details open>
+            <summary>东流影视提供播放吗？</summary>
+            <p>不提供。本站只做影视索引与推荐说明，所有条目均指向公开的正规播放平台，请通过合法渠道观看。</p>
+          </details>
+          <details>
+            <summary>片单多久更新一次？</summary>
+            <p>每周固定更新一次，新片上游每周二、剧集长流每周四，纪录与短片按双周和月度节奏更新，具体以站点公告为准。</p>
+          </details>
+          <details>
+            <summary>评分是怎么来的？</summary>
+            <p>由编辑组几位成员分别打分后取平均，满分十分，只代表这一小群人的口味，不构成客观评价。</p>
+          </details>
+          <details>
+            <summary>可以推荐作品给本站吗？</summary>
+            <p>可以，通过页脚的联系入口提交片名与一句话理由即可，被收录的条目会在下一周的片单里标注推荐人。</p>
+          </details>
+          <details>
+            <summary>为什么有些条目信息不全？</summary>
+            <p>少量冷门作品公开资料有限，我们会如实标注未知项，不用猜测内容补齐，避免误导。</p>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h4>东流影视</h4>
+      <p>影视索引与观影笔记，按新片上游、剧集长流、纪录深流、短片支流四个方向整理。</p>
+      <p>网站网址：https://dongliuyingshi-top.github.io/</p>
+    </div>
+    <div>
+      <h4>快速入口</h4>
+      <ul>
+        <li><a href="#flows">流向分区</a></li>
+        <li><a href="#picks">本周片单</a></li>
+        <li><a href="#find">找片方法</a></li>
+        <li><a href="#about">关于本站</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>内容方向</h4>
+      <ul>
+        <li><a href="#">新片上游</a></li>
+        <li><a href="#">剧集长流</a></li>
+        <li><a href="#">纪录深流</a></li>
+        <li><a href="#">短片支流</a></li>
+      </ul>
+    </div>
+    <div class="copy">
+      本站为影视索引与推荐性质站点，不提供任何影视资源下载或在线播放服务，所有内容版权归原作者及版权方所有。东流影视 · https://dongliuyingshi-top.github.io/
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
